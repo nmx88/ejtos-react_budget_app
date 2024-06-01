@@ -9,6 +9,10 @@ const Budget = () => {
   const handleBudgetChange = (event) => {
     setNewBudget(event.target.value);
   };
+  // My Code night 6/2
+  // if (newBudget > parseInt(20000)) {
+  //   alert("The value cannot exceed remaing funds £ " + { newBudget });
+  // }
   //We are then setting the value attribute of the input field to newBudget and adding an onChange event listener that calls handleBudgetChange when the user changes the value of the input field.
   return (
     <div className="alert alert-secondary">
