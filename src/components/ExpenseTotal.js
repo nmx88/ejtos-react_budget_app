@@ -7,9 +7,8 @@ const ExpenseTotal = () => {
   }, 0);
   return (
     <div className="alert alert-primary">
-      <span>Spent so fa: £{totalExpenses}</span>
+      <span>Spent so far: £{totalExpenses}</span>
     </div>
   );
 };
-
 export default ExpenseTotal;

@@ -48,7 +48,6 @@ const AllocationForm = (props) => {
           >
             <option defaultValue>Choose...</option>
             <option value="Marketing" name="marketing">
-              {" "}
               Marketing
             </option>
             <option value="Sales" name="sales">
@@ -78,7 +77,17 @@ const AllocationForm = (props) => {
             id="inputGroupSelect02"
             onChange={(event) => setAction(event.target.value)}
           >
-            <option defaultValue value="Add" name="Add">
+            <option
+              defaultValue
+              value="Add"
+              name="Add"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
               Add
             </option>
             <option value="Reduce" name="Reduce">
