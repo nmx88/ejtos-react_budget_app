@@ -1,15 +1,22 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../context/AppContext";
+import ExpenseTotal from "../components/ExpenseTotal.js";
 
 const Budget = () => {
   //We are using the useState hook to create a state variable called newBudget and initialize it with the current value of budget.
   const { budget } = useContext(AppContext);
   const [newBudget, setNewBudget] = useState(budget);
+
   //We are defining a function called handleBudgetChange that updates the value of newBudget when the user changes the value of the input field.
+  // const handleBudgetChange = (event) => {
+  //   setNewBudget(event.target.value);
+  // };
+
   const handleBudgetChange = (event) => {
-    setNewBudget(event.target.value);
+    const value = parseInt(event.target.value);
+    setNewBudget(value);
   };
-  // My Code night 6/2
+
   // if (newBudget > parseInt(20000)) {
   //   alert("The value cannot exceed remaing funds £ " + { newBudget });
   // }
