@@ -27,6 +27,18 @@ const ExpenseItem = (props) => {
     });
   };
 
+  const decreaseAllocation = (name) => {
+    const expense = {
+      name: name,
+      cost: 10,
+    };
+
+    dispatch({
+      type: "DECREASE_EXPENSE",
+      payload: expense,
+    });
+  };
+
   return (
     <tr>
       <td>{props.name}</td>
@@ -47,19 +59,22 @@ const ExpenseItem = (props) => {
         </button>
       </td>
       <td>
-        <TiDelete
-          size="1.5em"
-          onClick={handleDeleteExpense}
+        <button
+          onClick={(event) => decreaseAllocation(props.name)}
           style={{
+            outline: "none",
+            border: "none",
             // display: "flex",
-            color: "red",
             // alignItems: "center",
             // justifyContent: "center",
-            // size: "2x",
-            width: "50px",
-            height: "50px",
+            // gap: "100px",
           }}
-        ></TiDelete>
+        >
+          <FontAwesomeIcon icon={faMinusCircle} size="2x" color="red" />
+        </button>
+      </td>
+      <td>
+        <TiDelete size="1.5em" onClick={handleDeleteExpense}></TiDelete>
       </td>
     </tr>
   );

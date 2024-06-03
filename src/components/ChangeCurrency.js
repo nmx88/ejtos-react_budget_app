@@ -1,25 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 
 const ChangeCurrency = () => {
-  const { currency, setCurrency } = useContext(AppContext);
-  const [selectedCurrency, setSelectedCurrency] = useState(currency);
+  const { currency, dispatch } = useContext(AppContext);
 
   const handleCurrencyChange = (event) => {
     const newCurrency = event.target.value;
-    setSelectedCurrency(newCurrency);
-    setCurrency(newCurrency);
+    dispatch({ type: "CHG_CURRENCY", payload: newCurrency });
   };
 
   const getCurrencySymbol = (currencyCode) => {
     switch (currencyCode) {
-      case "USD":
+      case "$":
         return "($ Dollar)";
-      case "GBP":
+      case "£":
         return "(£ Pound)";
-      case "EUR":
+      case "€":
         return "(€ Euro)";
-      case "INR":
+      case "₹":
         return "(₹ Rupee)";
       default:
         return "";
@@ -27,19 +25,25 @@ const ChangeCurrency = () => {
   };
 
   return (
-    <div className="alert alert-success">
-      <span>Currency {getCurrencySymbol(selectedCurrency)}</span>
+    <div
+      className="alert alert-secondary"
+      style={{ backgroundColor: "lightgreen" }}
+    >
+      <span style={{ color: "white" }}>
+        Currency {getCurrencySymbol(currency)}
+      </span>
 
       <select
-        id="currency"
-        value={selectedCurrency}
-        onChange={handleCurrencyChange}
         className="form-select"
+        id="currency"
+        value={currency}
+        onChange={handleCurrencyChange}
+        style={{ backgroundColor: "lightgreen", color: "white" }}
       >
-        <option value="USD">$ Dollar</option>
-        <option value="GBP">£ Pound</option>
-        <option value="EUR">€ Euro</option>
-        <option value="INR">₹ Rupee</option>
+        <option value="$">$ Dollar</option>
+        <option value="£">£ Pound</option>
+        <option value="€">€ Euro</option>
+        <option value="₹">₹ Rupee</option>
       </select>
     </div>
   );
