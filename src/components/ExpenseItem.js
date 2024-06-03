@@ -49,10 +49,6 @@ const ExpenseItem = (props) => {
           style={{
             outline: "none",
             border: "none",
-            // display: "flex",
-            // alignItems: "center",
-            // justifyContent: "center",
-            // gap: "100px",
           }}
         >
           <FontAwesomeIcon icon={faPlusCircle} size="2x" color="green" />
@@ -64,10 +60,6 @@ const ExpenseItem = (props) => {
           style={{
             outline: "none",
             border: "none",
-            // display: "flex",
-            // alignItems: "center",
-            // justifyContent: "center",
-            // gap: "100px",
           }}
         >
           <FontAwesomeIcon icon={faMinusCircle} size="2x" color="red" />

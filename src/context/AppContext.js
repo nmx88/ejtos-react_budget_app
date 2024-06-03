@@ -56,6 +56,7 @@ export const AppReducer = (state, action) => {
       return {
         ...state,
         expenses: [...dec_expenses],
+        budget,
       };
 
     case "DELETE_EXPENSE":
