@@ -45,18 +45,29 @@ export const AppReducer = (state, action) => {
         expenses: [...red_expenses],
       };
 
+    // case "DECREASE_EXPENSE":
+    //   const dec_expenses = state.expenses.map((currentExp) => {
+    //     if (currentExp.name === action.payload.name) {
+    //       const newCost = currentExp.cost - action.payload.cost;
+    //       currentExp.cost = newCost >= 0 ? newCost : 0;
+    //     }
+    //     return currentExp;
+    //   });
+    //   return {
+    //     ...state,
+    //     expenses: [...dec_expenses],
+    //     budget,
+    //   };
     case "DECREASE_EXPENSE":
-      const dec_expenses = state.expenses.map((currentExp) => {
-        if (currentExp.name === action.payload.name) {
-          const newCost = currentExp.cost - action.payload.cost;
-          currentExp.cost = newCost >= 0 ? newCost : 0;
-        }
-        return currentExp;
-      });
       return {
         ...state,
-        expenses: [...dec_expenses],
-        budget,
+        expenses: state.expenses.map((currentExp) => {
+          if (currentExp.name === action.payload.name) {
+            const newCost = currentExp.cost - action.payload.cost;
+            return { ...currentExp, cost: newCost >= 0 ? newCost : 0 };
+          }
+          return currentExp;
+        }),
       };
 
     case "DELETE_EXPENSE":
@@ -74,6 +85,9 @@ export const AppReducer = (state, action) => {
         budget,
       };
     case "SET_BUDGET":
+      if (action.payload > 20000) {
+        alert("The value cannot exceed " + state.currency + "20,000!");
+      }
       action.type = "DONE";
       state.budget = action.payload;
 
@@ -93,7 +107,7 @@ export const AppReducer = (state, action) => {
 
 // 1. Sets the initial state when the app loads
 const initialState = {
-  budget: 20000,
+  budget: 2000,
   expenses: [
     { id: "Marketing", name: "Marketing", cost: 50 },
     { id: "Finance", name: "Finance", cost: 300 },
